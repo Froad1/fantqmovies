@@ -1,0 +1,76 @@
+.poster_container{
+    height: 50vh;
+    text-decoration: none;
+    display: flex;
+}
+
+.posterImage{
+    width: 100%;
+}
+
+.posterImage > img {
+    object-fit: cover;
+    height: 100%;
+}
+.carousel .slide img{
+}
+.posterImage_overlay {
+    color: rgba(255, 255, 255, 0.87);
+    fill: rgba(255, 255, 255, 0.87);
+    position: absolute;
+    padding: 5rem;
+    bottom: 0px;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    background-image: linear-gradient(rgb(0,0,0,0), rgb(36 36 36));
+    opacity: 1;
+}
+
+.posterImage_title {
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.posterImage_runtime {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.posterImage_rating {
+    display: flex;
+    align-items: center;
+}
+    .star_icon{
+        height: 18px;
+        width: 18px;
+    }
+
+.posterImage_description {
+
+}
+.popular_container{
+    margin: 0 5% 9vh;
+}
+    .cards_container{
+        gap: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        border-radius: 1.1rem;
+    }
+
+    .runtime_point{
+        border-radius: 50%;
+        height: 0.4rem;
+        width: 0.4rem;
+        background: rgba(255, 255, 255, 0.87);
+    }

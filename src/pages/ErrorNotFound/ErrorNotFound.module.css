@@ -1,0 +1,32 @@
+.error_container{
+    display: flex;
+    margin-top: 5rem;
+    flex-direction: column;
+    align-items: center;
+}
+    .error_container a{
+        width: 50%;
+        height: 50vh;
+    }
+
+    .error_container svg{
+        height: 100%;
+        width: 100%;
+    }
+    .error_container svg g{
+        fill: #7b7b7b;
+        width: 50%;
+        height: 50vh;
+    }
+    .error_container h1{
+        font-size: 3rem;
+        margin: 0;
+    }
+
+
+:root[data-color-scheme="dark"] .error_container svg g {
+    fill: #7b7b7b;
+}
+:root[data-color-scheme="light"] .poster_image_overlay {
+    fill: #030303;
+}

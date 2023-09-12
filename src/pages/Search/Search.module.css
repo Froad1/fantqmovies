@@ -1,0 +1,26 @@
+.cards_container{
+    margin: 1.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    margin: 1rem 0 5rem;
+    justify-content: center;
+}
+.input_container{
+    max-width: 100%;
+    display: flex;
+    margin: 2.5rem 2rem 1rem;
+    justify-content: center;
+}
+    .input_container input{
+        font-size: 1.1rem;
+        border: none;
+        padding: 0.6rem 1rem;
+        border-radius: 0.6rem;
+    }
+.card{
+    
+}
+    .poster{
+        width: calc(50% - (3/8)*1em);
+    }

@@ -1,0 +1,100 @@
+.header{
+    top: 0.5rem;
+    position: absolute;
+    width: calc(100% - 6rem);
+    padding: 0 3rem;
+    display: flex;
+    max-width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    z-index: 100;
+}
+
+    .logo{
+        display: flex;
+        align-items: flex-end;
+    }
+        .logo__1{
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        .logo__1:hover{
+            transform: scale(1.1);
+            fill: rgb(89, 89, 89);
+        }
+
+    .page_lists_container{
+        position: relative;
+    }
+        .navbar {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            padding: 20px;
+            gap: 1rem;
+        }
+            .nav_link {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                padding: 10px;
+                transition: all 0.3s ease-in-out;
+                font-weight: 500;
+            }
+            .active_link{
+                font-weight: 700;
+                transition: all 0.3s ease-in-out;
+                font-size: 1.1rem;
+            }           
+            .indicator {
+                position: relative;
+                width: 20%;
+                height: 4px;
+                background-color: rgba(255, 255, 255, 0.87);
+                transition: left 0.3s ease-in-out;
+                border-radius: 1rem;
+            }
+            :root[data-color-scheme="dark"] .indicator {
+                background: rgba(255, 255, 255, 0.87);
+            }
+            :root[data-color-scheme="light"] .indicator {
+                background: #213547;
+            }
+            
+    .account{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+        .search_form{
+            margin-right: 0.5rem;
+            gap: 0.5rem;
+            display: flex;
+            height: 50%;
+            align-items: center;
+        }
+            .input_container{
+
+            }
+                .search_movie_input{
+                    background: #242424;
+                    margin: 2rem 0;
+                    border: none;
+                    padding: 0;
+                    border-radius: 0.6rem;
+                    transition: all .3s ease-in-out;
+                    width: 0;
+                }
+
+        .login{
+            height: 1.5rem;
+        }
+            .user{
+                cursor: pointer;
+                height: 1.5rem;
+                border-radius: 50%;
+            }
+            .user:hover{
+                transform: scale(1.2);
+            }

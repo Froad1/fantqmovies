@@ -1,0 +1,36 @@
+.lists_container{
+    display: flex;
+    margin-top: 4rem;
+    padding: 3rem;
+    flex-direction: column;
+    align-items: center;
+}
+    .lists{
+        position: relative;
+        display: flex;
+        width: 80%;
+        background-color: #1F1F1F;
+        padding: 0.7rem;
+        font-size: 1.1rem;
+        justify-content: space-around;
+        border-radius: 10rem;
+    }
+        .lists div{
+            border-radius: 0.8rem;
+            padding: 0.5rem 1rem;
+            transition: all .3s ease-in-out;
+            cursor: pointer;
+        }
+    .search_movie_input{
+        margin: 2rem 0;
+        border: none;
+        padding: 0.4rem 0.6rem;
+        border-radius: 0.6rem;
+    }
+    .cards{
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+        justify-content: space-evenly;
+    }

@@ -1,0 +1,99 @@
+.card_container{
+    width: 180px;
+    min-width: 180px;
+    height: 42vh;
+}
+.card{
+    color: rgba(255, 255, 255, 0.87);
+    fill: rgba(255, 255, 255, 0.87);
+    background: #3C3C3C;
+    box-shadow: 0px 5px 20px 9px rgba(0, 0, 0, 0.25);
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 1.1rem;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+
+.cardImage{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.image{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.text_container{
+    bottom: 10%;
+    position: absolute;
+    z-index: 1;
+    padding: 1.1rem;
+}
+
+
+.icon_add_to_collection{
+    z-index: 2;
+    display: none;
+    margin: 0.7rem;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 0;
+}
+
+.card:hover .icon_add_to_collection{
+    display: flex;
+}
+
+.title{
+    font-weight: 800;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.rate{
+    margin: 0;
+}
+
+.description_container{
+    display: none;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    font-size: 0.9rem;
+}
+
+.card:hover .description_container{
+    font-size: 0.9rem;
+    display: flex;
+}
+.card:hover .text_container{
+    bottom: 0;
+}
+.runtime{
+    display: flex;
+    align-items: center;
+}
+.rating{
+    display: flex;
+    margin-left: 0.5rem;
+    align-items: center;
+}
+
+.card_overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%)
+}
+
+.card:hover .card_overlay{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+}

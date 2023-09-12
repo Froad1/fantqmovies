@@ -1,0 +1,18 @@
+.account_container{
+    margin-top: 5rem;
+    padding: 1.4rem;
+}
+
+.cards{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: space-evenly;
+}
+
+.search_movie_input{
+    border: none;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.6rem;
+}

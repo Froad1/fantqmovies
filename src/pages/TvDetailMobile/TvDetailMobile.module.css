@@ -1,0 +1,198 @@
+
+.tv_container{
+    margin-bottom: 6rem;
+}
+
+    .tv_main{
+        position: relative;
+    }
+
+    .poster_image_container{
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+    }
+
+        .poster_image_overlay{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(36,36,36,1) 0%, rgba(36,36,36,0) 100%), linear-gradient(0deg, rgba(36, 36, 36, 0.00) 90%, rgba(36,36,36,1) 100%), rgba(36,36,36,.3);
+            z-index: 1;
+        }
+        .poster_image{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(1.7px);
+        }
+
+    .text_container{
+        padding: 0 4rem;
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        bottom: 2rem;
+        align-items: flex-start;
+        z-index: 2;
+    }
+        .point{
+            width: .4rem;
+            height: .4rem;
+            background-color: rgba(255, 255, 255, 0.87);
+            border-radius: 50%;
+        }
+
+        .title{
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0;
+        }
+        .short_info{
+            gap: 1rem;
+            display: flex;
+            align-items: center;
+        }
+            .vote_average{
+                display: flex;
+                align-items: center;
+            }
+            .vote_star{
+                height: 1rem;
+                width: 1rem;
+            }
+
+        .buttons{
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+            .see_button{
+                display: flex;
+                background-color: #ff4949;
+                justify-content: center;
+            }
+            .set_user_rating svg{
+                fill: rgba(255, 255, 255, 0.87);
+            }
+            .watch_later{
+                height: 1.3rem;
+                width: 1.3rem;
+            }
+.description{
+    font-size: .9rem;
+    margin: 0 2.5rem;
+}
+
+.seasons_container{
+    display: flex;
+    height: 350px;
+    margin: 3rem 2.5rem 10vh;
+    overflow-x: auto;
+    align-items: center;
+}
+.seasons{
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    overflow-x: scroll;
+    align-items: center;
+}
+    .season{
+        transition: transform 0.2s ease;
+    }
+    .season:hover{
+        transform: scale(1.1);
+        z-index: 1;
+    }
+        .season_poster_container{
+            height: 250px;
+        }
+            .season_poster_img{
+                border-radius: 1rem;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .season_text_constainer{
+            display: flex;
+            justify-content: space-between;
+        }
+            .season_vote{
+                display: flex;
+                align-items: center;
+                gap: 0.2rem;
+            }
+.series_container{
+    margin: 0 4rem 5rem;
+}
+    .season_name_serias{
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .series{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+        .seria{
+            width: 90%;
+            max-width: 300px;
+        }
+        .seria_poster_container{
+
+        }
+            .seria_poster_img{
+                border-radius: 1rem;
+                width: 100%;
+            }
+        .seria_text_constainer{
+
+        }
+            .seria_title_container{
+                margin: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+                .seria_title{
+                    font-weight: 700;
+                }
+                .seria_runtime{
+                    color: #a3a3a3;
+                    font-weight: 400;
+                    font-size: .9rem;
+                }
+            .seria_overview{
+                font-size: .8rem;
+            }
+
+
+.recomendation_container{
+    display: flex;
+    margin: 0 2.5rem;
+    overflow-x: auto;
+    flex-direction: column;
+}
+    .recomendation{
+        gap: 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        border-radius: 1.1rem;
+    }
+
+
+:root[data-color-scheme="dark"] .poster_image_overlay {
+    background: linear-gradient(0deg, rgba(36,36,36,1) 0%, rgba(36,36,36,0) 100%), linear-gradient(0deg, rgba(36, 36, 36, 0.00) 90%, rgba(36,36,36,1) 100%), rgba(36,36,36,.3);
+}
+:root[data-color-scheme="light"] .poster_image_overlay {
+    background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(0deg, rgba(255, 255, 255, 0) 90%, rgb(255, 255, 255) 100%), rgba(255,255,255,.3);
+}

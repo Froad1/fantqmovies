@@ -1,0 +1,12 @@
+.see_later_container{
+    padding: 1.4rem;
+}
+
+
+.cards{
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: space-evenly;
+}

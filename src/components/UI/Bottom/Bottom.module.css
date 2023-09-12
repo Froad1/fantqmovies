@@ -1,0 +1,127 @@
+.bottom_container{
+    height: 9vh;
+    position: fixed;
+    bottom: 0;
+    background: #121212;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+}
+.bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .home{
+        height: 50%;
+        width: 50%;
+    }
+
+.account_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .account{
+        height: 50%;
+        width: 50%;
+    }
+.account_seenow_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .account_seenow{
+        height: 50%;
+        width: 50%;
+    }
+.account_seelater_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .account_seelater{
+        height: 50%;
+        width: 50%;
+    }
+
+.search_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .search{
+        height: 50%;
+        width: 50%;
+    }
+
+.mylists_icon{
+    padding: 0.3rem;
+    width: 4rem;
+    display: flex;
+    border-radius: 1.1rem;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+    .mylists{
+        height: 50%;
+        width: 50%;
+    }
+
+.selected{
+    background: rgb(36, 36, 36);
+}
+
+:root[data-color-scheme="dark"] .bottom_container {
+    background: #121212;
+}
+:root[data-color-scheme="light"] .bottom_container {
+    background: #e1e1e1;
+}
+
+:root[data-color-scheme="dark"] .selected {
+    background: rgb(36, 36, 36);
+}
+:root[data-color-scheme="light"] .selected {
+    background: rgb(199 199 199);
+}
