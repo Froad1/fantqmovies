@@ -1,0 +1,14 @@
+.notavailible_container{
+    background: #35353587;
+    display: flex;
+    position: absolute;
+    backdrop-filter: blur(2px);
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    flex-direction: column;
+    border: 2px solid black;
+}

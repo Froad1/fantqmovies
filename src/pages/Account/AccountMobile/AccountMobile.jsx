@@ -5,13 +5,16 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 
 import classes from './AccountMobile.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import NotAvailible from '../../../components/UI/NotAvailible/NotAvailible';
 
 const AccountMobile = () => {
     const [user, setUser] = useState([]);
     const [customLists, setCustomLists] = useState([]);
     const [customListsData, setCustomListsData] = useState([]);
     const [seeAddListModel, setSeeAddListModel] = useState(false);
+    const navigate = useNavigate();
+
 
 
     const firebaseConfig = {
@@ -33,7 +36,7 @@ const AccountMobile = () => {
                 checkCustomLists();
                 setUser(user);
             }
-            else navigate('/login')
+            else navigate('/login');
         })
     },[user]);
 
@@ -78,16 +81,19 @@ const AccountMobile = () => {
 
         if (root.getAttribute('data-color-scheme') === 'dark') {
           root.setAttribute('data-color-scheme', 'light');
-          setDarkTheme(false);
         } else {
           root.setAttribute('data-color-scheme', 'dark');
-          setDarkTheme(true);
         }
+    }
+
+    const signout = () =>{
+        firebase.auth().signOut();
     }
 
     return (
         <div className={classes.main}>
             <button onClick={changeTheme}>Змінити тему</button>
+            <button className={classes.signout_button} onClick={signout}>Sign Out</button>
             <div className={classes.lists_container}>
                 {customLists && customLists.map((e)=>(
                     <Link to={`/list/${e}`} key={e} className={classes.list}>
@@ -97,6 +103,7 @@ const AccountMobile = () => {
                     </Link>
                 ))}
                 <div onClick={()=>{setSeeAddListModel(!seeAddListModel)}} className={classes.list}>
+                    <NotAvailible/>
                     <div className={classes.first_block}>
                         <svg className={classes.add_list_icon} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
                     </div>
