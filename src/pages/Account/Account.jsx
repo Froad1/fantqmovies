@@ -6,6 +6,7 @@ import 'firebase/compat/auth';
 
 import classes from './Account.module.css'
 import { useNavigate } from 'react-router-dom';
+import NotAvailible from '../../components/UI/NotAvailible/NotAvailible';
 
 const Account = () => {
     const [user, setUser] = useState([]);
@@ -25,7 +26,7 @@ const Account = () => {
 
     return (
         <div className={classes.account_container}>
-            <button onClick={signout}>Sign Out</button>
+            <NotAvailible/>
         </div>
     );
 };

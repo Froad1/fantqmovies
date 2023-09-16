@@ -34,3 +34,27 @@
         gap: 1.2rem;
         justify-content: space-evenly;
     }
+
+    .not_avalible{
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .selected{
+        background: rgb(36, 36, 36);
+    }
+
+:root[data-color-scheme="dark"] .selected {
+    background: rgb(36, 36, 36);
+}
+:root[data-color-scheme="light"] .selected {
+    background: rgb(227 227 227);
+}
+
+:root[data-color-scheme="dark"] .lists {
+    background: #1F1F1F;
+}
+:root[data-color-scheme="light"] .lists {
+    background: #d3d3d3;
+}

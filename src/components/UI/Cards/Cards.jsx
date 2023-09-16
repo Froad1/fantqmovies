@@ -88,7 +88,7 @@ const Cards = ({id, rate, type, page, moviedata}) => {
             <div className={classes.card}>
                 <div className={classes.card_overlay}></div>
                 <div className={classes.cardImage}>
-                    <img src={`https://image.tmdb.org/t/p/original/${movie && movie.poster_path}`} alt="" className={classes.image}/>
+                    <img src={`https://image.tmdb.org/t/p/w500/${movie && movie.poster_path}`} alt="" className={classes.image}/>
                 </div>
                 <div className={classes.text_container}>
                     <p className={classes.title}>{type =='tv' ? movie && movie.name : movie && movie.title}</p>

@@ -63,6 +63,7 @@
             }
             
     .account{
+        position: relative;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -98,3 +99,54 @@
             .user:hover{
                 transform: scale(1.2);
             }
+            .no_avatar{
+                
+            }
+
+            .overflow{
+                left: 0;
+                top: 0;
+                position: absolute;
+                width: 100%;
+                height: 100vh;
+            }
+            
+            .account_info_container{
+                padding: 0;
+                display: flex;
+                position: absolute;
+                background: #3b3b3b;
+                width: 160%;
+                height: 0;
+                left: -5rem;
+                top: 4rem;
+                border-radius: 1rem;
+                gap: 1rem;
+                flex-direction: column;
+                flex-wrap: nowrap;
+                transition: all .3s ease-in-out;
+                z-index: 10;
+            }
+                .settings{
+                    display: flex;
+                    text-decoration: none;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-left: 1rem;
+                }
+                    .settings_icon{
+
+                    }
+                .change_theme_button{
+                    display: flex;
+                    align-items: center;
+                    transition: all .3s ease-in-out;
+                }
+
+:root[data-color-scheme="dark"] .account_info_container {
+    background: #3b3b3b;
+}
+:root[data-color-scheme="light"] .account_info_container {
+    background: #d3d3d3;
+}

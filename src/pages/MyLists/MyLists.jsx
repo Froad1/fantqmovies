@@ -9,6 +9,8 @@ import classes from './MyLists.module.css'
 import MyInput from '../../components/UI/MyInput/MyInput';
 import Cards from '../../components/UI/Cards/Cards';
 import PostService from '../../API/PostService';
+import ListEmpty from '../../components/ListEmpty/ListEmpty';
+import NotAvailible from '../../components/UI/NotAvailible/NotAvailible';
 
 const MyLists = () => {
     const [loggined, setLoggined] = useState(false);
@@ -195,33 +197,39 @@ const MyLists = () => {
     return (
         <div className={classes.lists_container}>
             <div className={classes.lists}>
-                <div className={classes.rating} style={selectedList === 'rating' ? {background: '#242424'} : {}} onClick={()=>{setSelectedList('rating')}}>Rating</div>
-                <div className={classes.favorite} style={selectedList === 'favorite' ? {background: '#242424'} : {}} onClick={()=>{setSelectedList('favorite')}}>Favorite</div>
-                <div className={classes.watchlist} style={selectedList === 'watchlist' ? {background: '#242424'} : {}} onClick={()=>{setSelectedList('watchlist')}}>Watchlist</div>
+                <div className={`${selectedList === 'rating' ? classes.selected: {}} ${classes.rating}`} onClick={()=>{setSelectedList('rating')}}>Rating</div>
+                <div className={`${selectedList === 'favorite' ? classes.selected: {}} ${classes.favorite}`} onClick={()=>{setSelectedList('favorite')}}>Favorite</div>
+                <div className={`${selectedList === 'watchlist' ? classes.selected: {}} ${classes.watchlist}`} onClick={()=>{setSelectedList('watchlist')}}>Watchlist</div>
                 {customLists.map((e)=>(
-                    <div key={e} style={selectedList === e ? {background: '#242424'} : {}} onClick={()=>{setSelectedList(e)}}>{e}</div>
+                    <div key={e} className={`${selectedList === e ? classes.selected: {}}`} onClick={()=>{setSelectedList(e)}}>{e}</div>
                 ))}
             </div>
             <MyInput type="text" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className={`${classes.search_movie_input} input`} placeholder="Пошук за назвою"/>
             {selectedList === 'rating' ?(
                 <div className={classes.cards}>
-                    {sortedRatingListData.map(doc =>(
+                    {sortedRatingListData.length !=0 ? sortedRatingListData.map(doc =>(
                         <Cards key={doc.id} id={doc.id} rate={doc.rate} type={doc.type} page='rating'/>
-                    ))}
+                    )):(
+                        <ListEmpty/>
+                    )}
                 </div> 
             ): selectedList === 'favorite' ? (
                 <div className={classes.cards}>
-                    {favoriteListData.map(doc =>(
+                    {favoriteListData.length !=0 ? favoriteListData.map(doc =>(
                         <Cards key={doc.id} id={doc.id} type={doc.type} page='seelater'/>
-                    ))}
+                    )):(
+                        <ListEmpty/>
+                    )}
                 </div>
             ): selectedList === 'watchlist' ? (
-                <div onClick={tesst}><button>123</button></div>
+                <div className={classes.not_avalible}><NotAvailible/></div>
             ): customLists.includes(selectedList) ? (
                 <div className={classes.cards}>
-                    {sortedCustomListsData.map(doc =>(
+                    {sortedCustomListsData.length !=0 ? sortedCustomListsData.map(doc =>(
                         <Cards key={doc.id} id={doc.id} type={doc.type}/>
-                    ))}
+                    )):(
+                        <ListEmpty/>
+                    )}
                 </div>
             ):(
                 <div>Error</div>

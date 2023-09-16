@@ -24,6 +24,7 @@ import MyListsMobile from './pages/MyListsMobile/MyListsMobile'
 import TvDetailMobile from './pages/TvDetailMobile/TvDetailMobile'
 import MovieDetailMobile from './pages/MovieDetailMobile/MovieDetailMobile'
 import ErrorNotFound from './pages/ErrorNotFound/ErrorNotFound'
+import Register from './pages/Register/Register'
 
 function App() {
   const [mobile, setMobile] = useState(false);
@@ -53,6 +54,7 @@ function App() {
           <Routes>
             <Route index element={ mobile ? <HomeMobile/> : <HomeTest/>}></Route>
             <Route path="/login" element={<Login/>}/>
+            <Route path="/register" element={<Register/>}/>
             <Route path='/movie/:id' element={ mobile ? <MovieDetailMobile/>: <MovieDetail/>}></Route>
             <Route path='/tv/:id' element={ mobile ? <TvDetailMobile/> : <TvDetail/>}></Route>
             <Route path='/watch/:name' element={<Watch/>}></Route>

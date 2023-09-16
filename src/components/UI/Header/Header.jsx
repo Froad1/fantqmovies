@@ -37,6 +37,7 @@ const Header = () => {
     const [location, setLocation] = useState('');
     const [searchVisible, setSearchVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const [accountInfoVisible, setAccountInfoVisible] = useState(false);
     const loc = useLocation();
     const navigate = useNavigate();
 
@@ -54,7 +55,7 @@ const Header = () => {
     },[loc])
 
     const indicatorStyle = {
-        left: location === '/' ? '0' : location === '/movies' ? '22%' : location === '/tv' ? '50%' : location === '/mylists' ? '77%' : '500%',
+        left: location === '/' ? '0' : location === '/movies' || location === '/movie/*' ? '22%' : location === '/tv' ? '50%' : location === '/mylists' ? '77%' : '500%',
     };
 
     const changeTheme = ()=>{
@@ -86,13 +87,16 @@ const Header = () => {
         console.log(responce.data.results)
         setPreSearchData(responce.data.results)
     }
-    
-    useEffect(()=>{
-        console.log(darkTheme);
-    },[darkTheme])
+
+    const signout = () =>{
+        firebase.auth().signOut();
+    }
 
     return (
         <header className={classes.header}>
+            {accountInfoVisible &&(
+                <div onClick={()=>{setAccountInfoVisible(!accountInfoVisible)}} className={classes.overflow}></div>
+            )}
             <div className={classes.logo}>
                 <Link to="/" className={classes.logo__1}>
                     fantq
@@ -104,7 +108,7 @@ const Header = () => {
                     <Link to="/" className={`${classes.nav_link} ${location === '/' ? classes.active_link : ''}`}>
                         Home
                     </Link>
-                    <Link to="/movies" className={`${classes.nav_link} ${location === '/movies' ? classes.active_link : ''}`}>
+                    <Link to="/movies" className={`${classes.nav_link} ${location === '/movies' || location === '/movie/' ? classes.active_link : ''}`}>
                         Movies
                     </Link>
                     <Link to="/tv" className={`${classes.nav_link} ${location === '/tv' ? classes.active_link : ''}`}>
@@ -117,12 +121,11 @@ const Header = () => {
                 <div className={classes.indicator} style={indicatorStyle}></div>
             </div>
             <div className={classes.account}>
-                {/* <button onClick={()=>{changeTheme()}}>1</button> */}
                 <form className={classes.search_form} onSubmit={(e)=>{handleInputChange(e)}}>
                     <MyInput placeholder='Введіть назву фільма' value={searchQuery} onChange={(e)=>{setSearchQuery(e.target.value)}} style={searchVisible ? {padding: "0.4rem 0.6rem" ,width: '150px'}: {}}  className={`${classes.search_movie_input} input`} required/>
                     <svg onClick={(e)=>{handleInputChange(e)}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" className={`${classes.search} icon`}><path d="M796-121 533-384q-30 26-69.959 40.5T378-329q-108.162 0-183.081-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l264 262-44 44ZM377-389q81.25 0 138.125-57.5T572-585q0-81-56.875-138.5T377-781q-82.083 0-139.542 57.5Q180-666 180-585t57.458 138.5Q294.917-389 377-389Z"/></svg>
                 </form>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" className={`${classes.account_more} icon`}><path d="M480-360 280-560h400L480-360Z"/></svg>
+                <svg onClick={()=>{setAccountInfoVisible(!accountInfoVisible)}} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" className={`${classes.account_more} icon`}><path d="M480-360 280-560h400L480-360Z"/></svg>
                 <div className={classes.login}>
                     {!loggined && (
                         <Link to="/login">
@@ -134,16 +137,38 @@ const Header = () => {
                     {loggined && (
                         <>
                             {user.photoURL ? (
-                                <Link to='/account'>
-                                    <img src={user.photoURL} className={classes.user} />
-                                </Link>
+                                    <img src={user.photoURL} className={classes.user} onClick={()=>{setAccountInfoVisible(!accountInfoVisible)}}/>
                             ) : (
-                                <Link to='/account'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+                                    <svg onClick={()=>{setAccountInfoVisible(!accountInfoVisible)}} className={`icon ${classes.user} ${classes.no_avatar}`} xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
                                         <path d="M222-255q63-44 125-67.5T480-346q71 0 133.5 23.5T739-255q44-54 62.5-109T820-480q0-145-97.5-242.5T480-820q-145 0-242.5 97.5T140-480q0 61 19 116t63 109Zm257.814-195Q422-450 382.5-489.686q-39.5-39.686-39.5-97.5t39.686-97.314q39.686-39.5 97.5-39.5t97.314 39.686q39.5 39.686 39.5 97.5T577.314-489.5q-39.686 39.5-97.5 39.5Zm.654 370Q398-80 325-111.5q-73-31.5-127.5-86t-86-127.266Q80-397.532 80-480.266T111.5-635.5q31.5-72.5 86-127t127.266-86q72.766-31.5 155.5-31.5T635.5-848.5q72.5 31.5 127 86t86 127.032q31.5 72.532 31.5 155T848.5-325q-31.5 73-86 127.5t-127.032 86q-72.532 31.5-155 31.5ZM480-140q55 0 107.5-16T691-212q-51-36-104-55t-107-19q-54 0-107 19t-104 55q51 40 103.5 56T480-140Zm0-370q34 0 55.5-21.5T557-587q0-34-21.5-55.5T480-664q-34 0-55.5 21.5T403-587q0 34 21.5 55.5T480-510Zm0-77Zm0 374Z" />
                                     </svg>
-                                </Link>
                             )}
+                        </>
+                    )}
+                </div>
+                <div className={classes.account_info_container} style={accountInfoVisible ? {padding: "1rem" ,height: '30vh'}: {}}>
+                    {accountInfoVisible &&(
+                        <>
+                            <Link to='/account' className={classes.settings}>
+                                <svg className={`icon ${classes.settings_icon}`} xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm112-260q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm0-80q-25 0-42.5-17.5T422-480q0-25 17.5-42.5T482-540q25 0 42.5 17.5T542-480q0 25-17.5 42.5T482-420Zm-2-60Zm-40 320h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Z"/></svg>
+                                <span>Settings</span>
+                            </Link>
+                            <button onClick={signout} className={classes.change_theme_button}>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z"/></svg>
+                                Sign Out
+                            </button>
+                            {darkTheme ?(
+                                <button onClick={()=>{changeTheme()}} className={classes.change_theme_button}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className={`icon`} height="24" viewBox="0 -960 960 960" width="24"><path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM80-440q-17 0-28.5-11.5T40-480q0-17 11.5-28.5T80-520h80q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440H80Zm720 0q-17 0-28.5-11.5T760-480q0-17 11.5-28.5T800-520h80q17 0 28.5 11.5T920-480q0 17-11.5 28.5T880-440h-80ZM480-760q-17 0-28.5-11.5T440-800v-80q0-17 11.5-28.5T480-920q17 0 28.5 11.5T520-880v80q0 17-11.5 28.5T480-760Zm0 720q-17 0-28.5-11.5T440-80v-80q0-17 11.5-28.5T480-200q17 0 28.5 11.5T520-160v80q0 17-11.5 28.5T480-40ZM226-678l-43-42q-12-11-11.5-28t11.5-29q12-12 29-12t28 12l42 43q11 12 11 28t-11 28q-11 12-27.5 11.5T226-678Zm494 495-42-43q-11-12-11-28.5t11-27.5q11-12 27.5-11.5T734-282l43 42q12 11 11.5 28T777-183q-12 12-29 12t-28-12Zm-42-495q-12-11-11.5-27.5T678-734l42-43q11-12 28-11.5t29 11.5q12 12 12 29t-12 28l-43 42q-12 11-28 11t-28-11ZM183-183q-12-12-12-29t12-28l43-42q12-11 28.5-11t27.5 11q12 11 11.5 27.5T282-226l-42 43q-11 12-28 11.5T183-183Zm297-297Z"/></svg>
+                                    Light Theme
+                                </button>
+                            ):(
+                                <button onClick={()=>{changeTheme()}} className={classes.change_theme_button}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className={`icon`} height="24" viewBox="0 -960 960 960" width="24"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+                                    Dark Theme
+                                </button>
+                            )}
+                            <div></div>
                         </>
                     )}
                 </div>

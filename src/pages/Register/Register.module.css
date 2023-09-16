@@ -1,16 +1,14 @@
-.loginPage_container{
-
+.register_page_container{
+    margin-top: 5rem;
 }
-    .login_container{
+    .register_container{
         width: 100%;
         height: 90vh;
         display: flex;
         justify-content: center;
         align-items: center;
     }
-        .login_box{
-            margin-top: 7rem;
-            max-width: 30%;
+        .register_box{
             padding: 3rem 3rem;
             display: flex;
             align-items: center;
@@ -19,14 +17,14 @@
             background: #383737;
             border-radius: 1.5rem;
         }
-            .login_box form{
+            .register_box form{
                 position: relative;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
                 gap: 1rem;
             }
-                .login_box form input{
+                .register_box form input{
                     padding: 0.7rem 1rem;
                     border-radius: 1rem;
                     outline: none;
@@ -43,9 +41,6 @@
                     width: 1.5rem;
                     height: 1.5rem;
                 }
-        .register_box{
-
-        }
 
 :root[data-color-scheme="dark"] .signInGoogle svg {
     fill: white;
@@ -54,15 +49,15 @@
     fill: #242424;
 }
 
-:root[data-color-scheme="dark"] .login_box{
+:root[data-color-scheme="dark"] .register_box{
     background-color: #383737;
 }
-:root[data-color-scheme="light"] .login_box{
+:root[data-color-scheme="light"] .register_box{
     background-color: #d0d0d0;
 }
-:root[data-color-scheme="dark"] .login_box form input{
+:root[data-color-scheme="dark"] .register_box form input{
     background-color: #383737;
 }
-:root[data-color-scheme="light"] .login_box form input{
+:root[data-color-scheme="light"] .register_box form input{
     background-color: #d0d0d0;
 }
